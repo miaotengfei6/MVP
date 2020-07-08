@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:background="#00ff00"
+        android:text="这是需要悬浮的布局"
+        android:textColor="#ffffff"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="100dp" />
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--必须在layout_scrollFlags中添加scroll属性
+        代表着这个布局是可以被收纳的
+        -->
+
+        <TextView
+            android:background="#000000"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            android:text="这是需要滑动的布局"
+            android:layout_width="match_parent"
+            app:layout_scrollFlags="scroll|enterAlways"
+            android:layout_height="200dp" />
+        <TextView
+            android:background="#00ff00"
+            android:text="这是需要悬浮的布局"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="100dp" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!--这里必须添加layout_behavior
+    这里的意思是，把AppBarLayout和RecyclerView进行绑定在一块
+    从而进行滑动的相应事件处理
+    -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layerType="software"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_height="wrap_content"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</LinearLayout>
